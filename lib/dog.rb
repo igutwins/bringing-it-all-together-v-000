@@ -18,6 +18,7 @@ end
 def save #for inserting data
   if self.id
     self.update
+    self
   else
    sql = <<-SQL
     INSERT INTO dogs (name, breed)
@@ -25,6 +26,7 @@ def save #for inserting data
    SQL
    DB[:conn].execute(sql, self.name, self.breed)
    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
+   self
   end
 end
 
