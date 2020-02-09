@@ -55,7 +55,9 @@ def self.find_by_id(id)
     WHERE id = ?
     LIMIT 1
   SQL
-  DB[:conn].execute(sql, id)[0]
+  row = DB[:conn].execute(sql, id)[0]
+  dog_from_db = new_from_db(row)
+  dog_from_db
 end
 
 end
