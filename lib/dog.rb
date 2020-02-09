@@ -45,7 +45,7 @@ def self.find_by_name(name)
 end
 
 def self.create(name:, breed:)
-  dog = self.new(name:, breed:)
+  dog = self.new(name, breed)
   dog.save
   dog
 end
