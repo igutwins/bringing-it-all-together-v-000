@@ -50,7 +50,12 @@ def self.create(id:nil, name:, breed:)
 end
 
 def self.find_by_id(id)
-
+  sql = <<-SQL
+    SELECT * FROM dogs
+    WHERE id = ?
+    LIMIT 1
+  SQL
+  DB[:conn].execute(sql, id)[0]
 end
 
 end
